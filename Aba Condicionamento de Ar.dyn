@@ -1,0 +1,627 @@
+{
+  "Uuid": "ba88994e-1612-4a35-85bc-952d8520c85c",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Aba Condicionamento de Ar",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "String": {
+        "Key": "DSCore.String",
+        "Value": "DSCoreNodes.dll"
+      },
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 20,
+      "SelectedString": "OST_Areas",
+      "Id": "1d97d8fde33b4f76812ea35d28dc514e",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bca0425e0ac049b8807a612213729275",
+          "Name": "Category",
+          "Description": "A categoria selecionada.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Todas as categorias incorporadas."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "Id": "d9cfa1fb02bb4cfeab2afad1632becda",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "16f47bb3c0a54f81bbb436b608460e5b",
+          "Name": "Category",
+          "Description": "Categoria",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a104ad48f91a4675b01e659bc6f089d3",
+          "Name": "Elements",
+          "Description": "Uma classe de elemento.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Obter todos os elementos da categoria especificada no modelo."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "2bfc8ec6c18e4e338d9ec5210ded6e1e",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [
+        {
+          "Id": "55f0d7049adb4d5f8dc5f43190d08a97",
+          "Name": "zonas",
+          "Description": "zonas",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5afe11c7069744d4b9a66e33a66cc0e7",
+          "Name": "",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "12800da8b4434a1780470294739770ef",
+          "Name": "",
+          "Description": "Valor da expressão na linha 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Permite que o código DesignScript seja criado diretamente",
+      "Code": "a = zonas.GetParameterValueByName(\"Nome\");\nString.Contains(a,\"Z\");"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "d164ea9b8af6423d835a0966d0228b50",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "8ea4039a9b304c87b2aa78ee3428d2a2",
+          "Name": "list",
+          "Description": "Lista a filtrar.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "12b54b783e3f41ba8a8457ceb958e233",
+          "Name": "mask",
+          "Description": "Lista de booleanos representando uma máscara.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0f8d34f031b644b1ad8cebc06a3c88d5",
+          "Name": "in",
+          "Description": "Os itens cujo índice de máscara é verdadeiro.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6c53898fbac24e2eb7a1e442e3cd3e89",
+          "Name": "out",
+          "Description": "Os itens cujo índice de máscara é falso.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Replication": "Auto",
+      "Description": "Filtra uma sequência examinando os índices correspondentes em lista separada de booleanos.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "c7e9fdc4fee648bab090255fe0940732",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [
+        {
+          "Id": "ee6720dd582c42de8c454f04198fe14f",
+          "Name": "nomedaszonas",
+          "Description": "nomedaszonas",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1afa519bfb2842aaac1bfc6bd3bf5191",
+          "Name": "",
+          "Description": "n",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f8dbc346812f4fae8e4631d75d5dcd06",
+          "Name": "",
+          "Description": "s",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "37f5efc20df742419a64f51505f17a49",
+          "Name": "",
+          "Description": "Valor da expressão na linha 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "759d5269a6014842b1391ff526e93b15",
+          "Name": "",
+          "Description": "Valor da expressão na linha 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "000017fb79df4c7dbc9d6f605d948006",
+          "Name": "",
+          "Description": "Valor da expressão na linha 5",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ba64fc2bb0894e41a30f6e6ebefbb8ef",
+          "Name": "",
+          "Description": "resultado",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Permite que o código DesignScript seja criado diretamente",
+      "Code": "n = List.Count(nomedaszonas);\ns = List.OfRepeatedItem(\"Sistemas unitários\",n);\n\"CondicionamentoDeAr\";\n23;\n1;\nresultado = List.Transpose([nomedaszonas,s]);"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "Id": "e1534b7181414abb9f0e11a203f21dc6",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bb68967287474ee3bd5c79f7290d6001",
+          "Name": "",
+          "Description": "Caminho do arquivo",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Permite selecionar um arquivo no sistema e retornar seu caminho",
+      "HintPath": "C:\\Users\\rafae\\Desktop\\BIM\\estudo de caso\\INI_C-input_interface.xlsx",
+      "InputValue": "C:\\Users\\rafae\\Desktop\\BIM\\estudo de caso\\INI_C-input_interface.xlsx"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "be72a7d639544c16b5b2b1f54c2dcd5e",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "23f1671761cf41e2b3b691ca7698c7a8",
+          "Name": "filePath",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6ca01aa6fa2b4b2683b186527782f394",
+          "Name": "sheetName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0fcdadfd91584d759412976b16b8d7d3",
+          "Name": "startRow",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "465b6e1ab3b54d3fb1a1a3099c0b299a",
+          "Name": "startColumn",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f39046e2226349f5b27d336194b0ad23",
+          "Name": "data",
+          "Description": "var[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f153953744324ed884bf6976d988851b",
+          "Name": "overWrite",
+          "Description": "bool\nValor padrão : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9d85df2b3e014aee9abed5afde6872bf",
+          "Name": "writeAsString",
+          "Description": "bool\nValor padrão : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c72ace1ade674a09bb176724367d6ce0",
+          "Name": "var[][]",
+          "Description": "var[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSOffice.Data.ExportToExcel@string,string,int,int,var[][],bool,bool",
+      "Replication": "Auto",
+      "Description": "Data.ExportToExcel (filePath: string, sheetName: string, startRow: int, startColumn: int, data: var[][], overWrite: bool = false, writeAsString: bool = false): var[][]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "bca0425e0ac049b8807a612213729275",
+      "End": "16f47bb3c0a54f81bbb436b608460e5b",
+      "Id": "961aaa40c5dd4de095d30d442faf425d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "a104ad48f91a4675b01e659bc6f089d3",
+      "End": "55f0d7049adb4d5f8dc5f43190d08a97",
+      "Id": "529de228ff6a4316948fa566f75c0411",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "5afe11c7069744d4b9a66e33a66cc0e7",
+      "End": "8ea4039a9b304c87b2aa78ee3428d2a2",
+      "Id": "30a61ffda90d4f87aff940810216e563",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "12800da8b4434a1780470294739770ef",
+      "End": "12b54b783e3f41ba8a8457ceb958e233",
+      "Id": "5aeb94c58e27459387802eb99bcbc90b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "0f8d34f031b644b1ad8cebc06a3c88d5",
+      "End": "ee6720dd582c42de8c454f04198fe14f",
+      "Id": "ddc7933a8690440c88e35d6f34c13f56",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "37f5efc20df742419a64f51505f17a49",
+      "End": "6ca01aa6fa2b4b2683b186527782f394",
+      "Id": "c2f56f106a0c49a8b45bea517ef8b294",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "759d5269a6014842b1391ff526e93b15",
+      "End": "0fcdadfd91584d759412976b16b8d7d3",
+      "Id": "be15a873d8fe4a2987705355e717a97b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "000017fb79df4c7dbc9d6f605d948006",
+      "End": "465b6e1ab3b54d3fb1a1a3099c0b299a",
+      "Id": "93d8efbad7774515af27c6c11bfe361b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "ba64fc2bb0894e41a30f6e6ebefbb8ef",
+      "End": "f39046e2226349f5b27d336194b0ad23",
+      "Id": "c9c26b538e5c4c2182ac0921afe5d338",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "bb68967287474ee3bd5c79f7290d6001",
+      "End": "23f1671761cf41e2b3b691ca7698c7a8",
+      "Id": "f6940a1ebef44c049e7820b44a40af14",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "INI_C-input_interface.xlsx",
+      "ReferenceType": "External",
+      "Nodes": [
+        "e1534b7181414abb9f0e11a203f21dc6"
+      ]
+    }
+  ],
+  "EnableLegacyPolyCurveBehavior": null,
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Propriedades",
+      "Version": "3.3",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "8.2",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Nenhum",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "3.3.0.6316",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Visualização do plano de fundo",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "1d97d8fde33b4f76812ea35d28dc514e",
+        "Name": "Categories",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 29.111321388049646,
+        "Y": 215.11105103198577
+      },
+      {
+        "Id": "d9cfa1fb02bb4cfeab2afad1632becda",
+        "Name": "All Elements of Category",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 276.11132138804965,
+        "Y": 216.11105103198577
+      },
+      {
+        "Id": "2bfc8ec6c18e4e338d9ec5210ded6e1e",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 566.0,
+        "Y": 215.0
+      },
+      {
+        "Id": "d164ea9b8af6423d835a0966d0228b50",
+        "Name": "List.FilterByBoolMask",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1047.0,
+        "Y": 219.0
+      },
+      {
+        "Id": "c7e9fdc4fee648bab090255fe0940732",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 643.3345048762776,
+        "Y": 480.33180131563677
+      },
+      {
+        "Id": "e1534b7181414abb9f0e11a203f21dc6",
+        "Name": "File Path",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 727.9883417317071,
+        "Y": 685.5516271991596
+      },
+      {
+        "Id": "be72a7d639544c16b5b2b1f54c2dcd5e",
+        "Name": "Data.ExportToExcel",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1272.422272329215,
+        "Y": 489.55541218405705
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "828b00246e8548aca6141a4c6b7894f3",
+        "Title": "Recebe áreas definidas",
+        "DescriptionText": "Descrição <Clique duas vezes aqui para editar a descrição do grupo>",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "1d97d8fde33b4f76812ea35d28dc514e",
+          "d9cfa1fb02bb4cfeab2afad1632becda"
+        ],
+        "HasNestedGroups": false,
+        "Left": 19.111321388049646,
+        "Top": 142.11105103198577,
+        "Width": 524.0,
+        "Height": 206.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "883066aa-1fe2-44a4-9bd1-c3df86bfe9f6",
+        "InitialTop": 215.11105103198577,
+        "InitialHeight": 163.0,
+        "TextblockHeight": 63.0,
+        "Background": "#FFFFB8D8"
+      },
+      {
+        "Id": "467ea4a30586428ba1bacf5d9be3f14b",
+        "Title": "Filtra as zonas térmicas",
+        "DescriptionText": "Descrição <Clique duas vezes aqui para editar a descrição do grupo>",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "2bfc8ec6c18e4e338d9ec5210ded6e1e",
+          "d164ea9b8af6423d835a0966d0228b50"
+        ],
+        "HasNestedGroups": false,
+        "Left": 556.0,
+        "Top": 142.0,
+        "Width": 736.0,
+        "Height": 244.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "4d68be4a-a04d-4945-9dd5-cdf61079d790",
+        "InitialTop": 215.0,
+        "InitialHeight": 201.0,
+        "TextblockHeight": 63.0,
+        "Background": "#FFB9F9E1"
+      },
+      {
+        "Id": "1b8f16015c644f1c959e562eacca17aa",
+        "Title": "Coleta nome e organiza dados",
+        "DescriptionText": "Descrição <Clique duas vezes aqui para editar a descrição do grupo>",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "c7e9fdc4fee648bab090255fe0940732",
+          "e1534b7181414abb9f0e11a203f21dc6"
+        ],
+        "HasNestedGroups": false,
+        "Left": 633.3345048762776,
+        "Top": 407.33180131563677,
+        "Width": 585.0,
+        "Height": 419.21982588352284,
+        "FontSize": 36.0,
+        "GroupStyleId": "4d68be4a-a04d-4945-9dd5-cdf61079d790",
+        "InitialTop": 480.33180131563677,
+        "InitialHeight": 376.21982588352284,
+        "TextblockHeight": 63.0,
+        "Background": "#FFB9F9E1"
+      },
+      {
+        "Id": "94d51a7482e24a09856d8e57770ac88a",
+        "Title": "Exporta dados",
+        "DescriptionText": "Descrição <Clique duas vezes aqui para editar a descrição do grupo>",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "be72a7d639544c16b5b2b1f54c2dcd5e"
+        ],
+        "HasNestedGroups": false,
+        "Left": 1262.422272329215,
+        "Top": 407.55541218405705,
+        "Width": 267.0,
+        "Height": 419.00000000000006,
+        "FontSize": 36.0,
+        "GroupStyleId": "07655dc1-2d65-4fed-8d6a-37235d3e3a8d",
+        "InitialTop": 489.55541218405705,
+        "InitialHeight": 366.99999999999994,
+        "TextblockHeight": 72.0,
+        "Background": "#FFFFC999"
+      }
+    ],
+    "X": 80.7721598063672,
+    "Y": 137.5041375525638,
+    "Zoom": 0.6274081265976349
+  }
+}
